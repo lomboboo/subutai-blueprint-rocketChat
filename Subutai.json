@@ -6,7 +6,7 @@
   "containers": [
     {
       "hostname": "${contName}",
-      "template": "ubuntu-xenial",
+      "template": "debian-stretch",
       "peer-criteria": "HTTP-GROUP",
       "size": "${containerSize}",
       "port-mapping": [
