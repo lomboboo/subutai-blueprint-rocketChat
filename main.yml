@@ -2,5 +2,8 @@
 - hosts:  all
   remote_user: root
   gather_facts: yes
+
+  vars:
+    rocket_chat_mongodb_apt_repo: deb http://repo.mongodb.org/apt/debian wheezy/mongodb-org/3.0 main
   roles:
     - RocketChat.Server
