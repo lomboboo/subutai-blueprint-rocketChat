@@ -20,7 +20,7 @@ Features
 - __Optional automatic upgrades [requires Ansible 2.0]:__
     If a new version of [Rocket.Chat](http://rocket.chat) is released, or if you want to follow development for testing purposes, simply update the `rocket_chat_version` to whichever release you wish to deploy (see [the Rocket.Chat releases page](https://rocket.chat/releaes), set `rocket_chat_automatic_upgrades` to `true` and let this role do the rest!
     If there's a change to the code deployed to your [Rocket.Chat](http://rocket.chat) server (either because of a remote change to the `rocket_chat_version` you're following, 'latest' or 'develop' for instance, or because you set a new `rocket_chat_version` to fetch), this role will handle the upgrade and redeployment of the [Rocket.Chat](http://rocket.chat) service, keeping your data in tact.
-	_Note: This functionality requires Ansible 2.0. See how to fetch the 2.0 version of this role in the [Install from Ansible Galaxy secion](#install-the-ansible-20-version-of-this-role)_
+	_Note: This functionality requires Ansible 2.0. See how to fetch the 2.0 version of this role in the [Install from Ansible Galaxy section](#install-the-ansible-20-version-of-this-role)_
 
 Supported Platforms
 -------------------
@@ -66,10 +66,17 @@ All variables have sane defaults set in [`defaults/main.yml`](defaults/main.yml)
 | `rocket_chat_include_mongodb` | true | A boolean value that determines whether or not to deploy MongoDB |
 | `rocket_chat_mongodb_keyserver` | keyserver.ubuntu.com | The GPG key server to use when importing the MongoDB repo key |
 | `rocket_chat_mongodb_gpg_key` | `7F0CEB10` | The GPG key fingerprint to import for the MongoDB repo |
+| `rocket_chat_mongodb_user` | not used by default | Username to be used when connecting to MongoDB. If you set this, you should also define `rocket_chat_mongodb_password`, otherwise no user/pass is used to connect to MongoDB |
+| `rocket_chat_mongodb_password` | not used by default | Password to be used when connecting to MongoDB. If you set this, you should also define `rocket_chat_mongodb_user`, otherwise no user/pass is used to connect to MongoDB |
 | `rocket_chat_mongodb_server` | 127.0.0.1 | The IP/FQDN of the MongoDB host |
 | `rocket_chat_mongodb_port` | 27017 | The TCP port to contact the MongoDB host host via |
+| `rocket_chat_mongodb_database` | rocketchat |  The MongoDB database to be used for Rocket.Chat |
+| `rocket_chat_mongodb_use_tls`   | false  | Whether or not to use TLS to connect to the MongoDB DB  |
 | `rocket_chat_mongodb_packages` | `mongodb` | The name of the MongoDB package(s) to install (differs for different distros - see `vars/`) |
 | `rocket_chat_mongodb_config_template` | [`mongod.conf.j2`](templates/mongod.conf.j2) | The `/etc/mongod.conf` template to deploy |
+| `rocket_chat_mongodb_org_pkgs` | false &#124; true (Debian/Ubuntu) | Use official MongoDB.org community edition packages or not |
+| `rocket_chat_mongodb_org_version`   | 3.4   | Version string of official packages to install |
+| `rocket_chat_mongodb_service_name` | `mongod` | The name of the systemd service unit and mongodb config file in /etc |
 | `rocket_chat_include_nginx`| true | A boolean value that determines whether or not to deploy Nginx |
 | `rocket_chat_ssl_generate_certs` | true | A boolean value that determines whether or not to generate the Nginx SSL certs |
 | `rocket_chat_ssl_key_path` | `/etc/nginx/rocket_chat.key` | The destination path for the Nginx SSL private key |
