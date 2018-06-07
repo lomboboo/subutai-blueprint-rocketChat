@@ -6,14 +6,14 @@
   "containers": [
     {
       "hostname": "${contName}",
-      "template": "ubuntu-xenial",
+      "template": "debian-stretch",
       "peer-criteria": "HTTP-GROUP",
       "size": "${containerSize}",
       "port-mapping": [
         {
           "protocol": "HTTP",
           "domain": "${domain}",
-          "internal-port": "8065",
+          "internal-port": "3000",
           "external-port": "80"
         }
       ]
